@@ -1,0 +1,21 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+{% block contents %}
+<body class="student">
+<div class="button-container">
+    <h1>理由書き込み書</h1>
+    <form id="reasonForm">
+        <label for="reason">理由を入力してください:</label>
+        <textarea id="reason" name="reason" required></textarea>
+        <br>
+        <button type="submit">送信</button>
+    </form>        
+</div>
+<script src="{% static 'js/student.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>
