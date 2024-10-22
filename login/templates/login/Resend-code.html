@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メール再送信ページ</title>
+</head>
+<body>
+
+<div class="resend-container">
+    <h2>メールの再送信</h2>
+    <p class="message">あなたのメール宛に認証コードを送信しました。<br>認証コードを入力してください。</p>
+    
+    <form action="/verify-code" method="post">
+        <label for="code">確認コード</label>
+        <input type="text" id="code" name="code" required>
+
+        <button type="submit">認証コードを確認</button>
+    </form>
+
+    <form action="/resend-email" method="post">
+        <p class="message">再度送信しますか？</p>
+        <button type="submit">メールの再送信</button>
+    </form>
+</div>
+
+</body>
+</html>
