@@ -1,5 +1,7 @@
 # student/views.py
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+
+
 
 def student_home(request):
     return render(request, 'student/index.html')
