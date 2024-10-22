@@ -1,11 +1,21 @@
-<!-- login/templates/login/hello.html -->
+{% extends "student/base.html" %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Student home</title>
-</head>
-<body>
-    <h1>Student Page</h1>
+{% block contents %}
+<body class="student">
+<h1>現在の時間</h1>
+<div id="clock"></div>
+
+<div class="button-container">
+    <button onclick="handleButtonClick('登校')">登校</button>
+    <button onclick="handleButtonClick('下校')">下校</button>
+    <button onclick="handleButtonClick('遅刻')">遅刻</button>
+    <button onclick="handleButtonClick('欠席')">欠席</button>
+</div>
+<script src="{% static 'js/student.js' %}"></script>
+{% endblock %}
+
 </body>
 </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<body>
+{% block student_header %}
+<header>
+    <div class="logo">生徒管理アプリ</div>
+    <div class="menu-icon" onclick="toggleDropdown()">☰</div>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="#">出席登録</a>
+        <a href="#">出席・出欠確認</a>
+        <a href="#">パスワードの変更</a>
+        <a href="#">ログアウト</a>
+    </div>
+</header>
+{% endblock %}
+{% block contents %}{% endblock %}
+</body>
+</html>
