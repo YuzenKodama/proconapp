@@ -4,7 +4,7 @@ from django.shortcuts import render
 def teacher_base(request):
     return render(request, 'teacher/base.html')
 
-def teacher_index(request):
+def teacher_home(request):
     return render(request, 'teacher/index.html')
 
 def teacher_changepass(request):
