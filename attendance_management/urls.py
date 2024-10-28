@@ -19,5 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', include('login.urls')),  # アプリのURLを追加
+    path('login/', include('login.urls')), 
+    path('teacher/', include('teacher.urls')), # アプリのURLを追加
+
 ]
