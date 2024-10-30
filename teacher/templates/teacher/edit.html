@@ -8,63 +8,67 @@
 
 <h1>生徒の登校状況の確認</h1>
 
-    <div class="container">
+<div class="container">
 
-        <div class="tabs">
-            <button onclick="filterPeriod('week')">過去一週間</button>
-            <button onclick="filterPeriod('month')">過去一ヶ月</button>
-            <button onclick="filterPeriod('year')">過去一年</button>
-        </div>
-
-        <div class="search-container">
-            <label for="keyword">キーワード：</label>
-            <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
-        </div>
-
-        <div class="dropdown-container">
-            <label for="status">状況：</label>
-            <select id="status">
-                <option value="出席">出席</option>
-                <option value="遅刻">遅刻</option>
-                <option value="早退">早退</option>
-                <option value="欠席">欠席</option>
-            </select>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>日付</th>
-                    <th>状況</th>
-                    <th>出席時間</th>
-                    <th>退出時間</th>
-                </tr>
-            </thead>
-            <tbody id="attendanceData">
-                <tr>
-                    <td>2024-10-15</td>
-                    <td>出席</td>
-                    <td>09:00</td>
-                    <td>15:00</td>
-                </tr>
-                <tr>
-                    <td>2024-10-16</td>
-                    <td>欠席</td>
-                    <td>--:--</td>
-                    <td>--:--</td>
-                </tr>
-            </tbody>
-        </table>
-
+    <div class="tabs">
+        <button onclick="filterPeriod('week')">過去一週間</button>
+        <button onclick="filterPeriod('month')">過去一ヶ月</button>
+        <button onclick="filterPeriod('year')">過去一年</button>
+    </div>
+   
+    <div class="search-container">
+        <label for="keyword"></label>
+        <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
     </div>
 
-    <script>
-        // 期間フィルターの処理
-        function filterPeriod(period) {
-            console.log(period + "を選択しました");
-            // ここでフィルタリングロジックを実装する
-        }
-    </script>
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th>学籍番号</th>
+            <th>クラス</th>
+            <th>登校時間</th>
+            <th>退出時間</th>
+            <th>状況</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+
+
+    <div class="input-form">
+        <label for="studentNumber"></label>
+        <input type="text" id="studentNumber" placeholder="学籍番号を入力">
+
+        <label for="studentName"></label>
+        <input type="text" id="studentName" placeholder="名前を入力">
+
+        <label for="class"></label>
+        <input type="text" id="class" placeholder="クラスを入力">
+
+        <label for="attendanceTime"></label>
+        <input type="time" id="attendanceTime">
+
+        <label for="exitTime"></label>
+        <input type="time" id="exitTime">
+
+        <label for="status"></label>
+        <select id="status">
+            <option value="出席">出席</option>
+            <option value="遅刻">遅刻</option>
+            <option value="早退">早退</option>
+            <option value="欠席">欠席</option>
+        </select>
+
+        <button onclick="addAttendance()">追加</button>
+    </div>
+
+<script>
+    // 期間フィルターの処理
+    function filterPeriod(period) {
+        console.log(period + "を選択しました");
+    
+    }
+
+</script>
 {% endblock %}
 </body>
 </html>

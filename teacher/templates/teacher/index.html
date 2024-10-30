@@ -4,7 +4,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 {% block contents %}
-
+<header>
+    <div class="logo">生徒管理アプリ</div>
+    <div class="menu-icon" onclick="toggleDropdown()">☰</div>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="/teacher/index.html">登校表示</a>
+        <a href="/teacher/edit.html">登録状況</a>
+        <a href="/teacher/holiday.html">休日設定</a>
+        <a href="/teacher/changepass.html">パスワードの変更</a>
+        <a href="/teacher/logout.html">ログアウト</a>
+</header>
 
     <div class="date-container">
         <label for="date">日付を選択:</label>
@@ -13,48 +22,59 @@
         <input type="submit" value="検索">
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>名前</th>
-                <th>学籍番号</th>
-                <th>クラス・学科</th>
-                <th>登校時間</th>
-                <th>退出時間</th>
-                <th>状況</th>
-                <th>編集</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>松浦 七星</td>
-                <td>23-02239</td>
-                <td>システム開発</td>
-                <td>09:17</td>
-                <td>15:10</td>
-                <td>遅刻</td>
-                <td><button type="button">編集</button></td>
-            </tr>
-            <tr>
-                <td>児玉 悠善</td>
-                <td>23-43242</td>
-                <td>システム開発</td>
-                <td>09:07</td>
-                <td>15:13</td>
-                <td>出席</td>
-                <td><button type="button">編集</button></td>
-            </tr>
-            <tr>
-                <td>田中 太郎</td>
-                <td>23-23453</td>
-                <td>高度システム</td>
-                <td>--:--</td>
-                <td>--:--</td>
-                <td style="color:red;">欠席</td>
-                <td><button type="button">編集</button></td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+    <div class="search-container">
+        <label for="keyword"></label>
+        <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
+    </div>
+
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th>学籍番号</th>
+            <th>クラス</th>
+            <th>登校時間</th>
+            <th>退出時間</th>
+            <th>状況</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+
+
+    <div class="input-form">
+        <label for="studentNumber"></label>
+        <input type="text" id="studentNumber" placeholder="学籍番号を入力">
+
+        <label for="studentName"></label>
+        <input type="text" id="studentName" placeholder="名前を入力">
+
+        <label for="class"></label>
+        <input type="text" id="class" placeholder="クラスを入力">
+
+        <label for="attendanceTime"></label>
+        <input type="time" id="attendanceTime">
+
+        <label for="exitTime"></label>
+        <input type="time" id="exitTime">
+
+        <label for="status"></label>
+        <select id="status">
+            <option value="出席">出席</option>
+            <option value="遅刻">遅刻</option>
+            <option value="早退">早退</option>
+            <option value="欠席">欠席</option>
+        </select>
+
+        <button onclick="addAttendance()">追加</button>
+    </div>
+
+<script>
+    // 期間フィルターの処理
+    function filterPeriod(period) {
+        console.log(period + "を選択しました");
+    
+    }
+
+</script>
 {% endblock %}
+</body>
 </html>
