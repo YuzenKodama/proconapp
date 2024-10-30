@@ -1,0 +1,27 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+{% block contents %}
+
+<body>
+
+<h1>パスワード変更</h1>
+<form id="passwordChangeForm">
+    <label for="currentPassword">現在のパスワード:</label>
+    <input type="password" id="currentPassword" name="currentPassword" required>
+
+    <label for="newPassword">新しいパスワード:</label>
+    <input type="password" id="newPassword" name="newPassword" required>
+
+    <label for="confirmPassword">確認用パスワード:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+    <button type="submit">変更</button>
+</form>
+<script src="{% static 'js/teacher.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>
