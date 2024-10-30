@@ -1,6 +1,6 @@
 # login/views.py
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render,redirect,HttpResponseRedirect
+from django.contrib.auth import login
 from django.contrib import messages
 from .models import CustomUser
 
@@ -16,18 +16,23 @@ def login_view(request):
         password = request.POST.get('password')
         
         # ユーザー認証
-        user = authenticate(request, username=student_id, password=password)
-        if user is not None:
+        try:
+            user = CustomUser.objects.get(student_id=student_id)
+        except CustomUser.DoesNotExist:
+            messages.error(request, "IDかパスワードが無効です。")
+            return render(request, 'login/login.html')  # GETリクエストの場合の処理
+            
+        if user.password == password:
             login(request, user)
 
             # 役割に応じたリダイレクト
             if user.role == CustomUser.Role.STUDENT:
-                return redirect('student_view')  # 生徒のビューにリダイレクト
+                return redirect('student_home')  # 生徒のビューにリダイレクト
             elif user.role == CustomUser.Role.TEACHER:
-                return redirect('teacher_view')  # 先生のビューにリダイレクト
+                return redirect('teacher_home')  # 先生のビューにリダイレクト
             elif user.role == CustomUser.Role.ADMIN:
-                return redirect('admin_view')  # 管理者のビューにリダイレクト
+                return redirect('admin_home')  # 管理者のビューにリダイレクト
         else:
-            messages.error(request, "学生番号またはパスワードが無効です。")
+            messages.error(request, "パスワードが無効です。")
     
-    return render(request, 'login.html')  # GETリクエストの場合の処理
+    return render(request, 'login/login.html')  # GETリクエストの場合の処理

@@ -4,7 +4,7 @@ from .views import teacher_home,teacher_base,teacher_holiday,teacher_edit,teache
 
 urlpatterns = [
 
-    path('', teacher_home, name='index'),
+    path('', teacher_home, name='teacher_home'),
     path('base/', teacher_base, name='base'),
     path('edit/', teacher_edit, name='edit'),
     path('holiday/', teacher_holiday, name='holiday'),
