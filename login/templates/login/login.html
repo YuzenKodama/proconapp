@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+</head>
+<body>
+    <h1>ログイン</h1>
+    
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div>
+            <label for="student_id">学生番号:</label>
+            <input type="text" name="student_id" required>
+        </div>
+        <div>
+            <label for="password">パスワード:</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">ログイン</button>
+        </div>
+    </form>
+
+    <a href="{% url 'change_pass' %}">パスワードを忘れましたか？</a>
+</body>
+</html>
