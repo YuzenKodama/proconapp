@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', include('login.urls')),  # アプリのURLを追加
     path('student/', include('student.urls')),  # アプリのURLを追加
-    path('teacer/', include('teacher.urls')),  # アプリのURLを追加
+    path('teacher/', include('teacher.urls')),  # アプリのURLを追加
 ]
