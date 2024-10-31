@@ -14,36 +14,12 @@
         <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
         <input type="submit" value="検索">
     </div>
-
-    <div class="input-form">
-        <label for="studentNumber">学籍番号：</label>
-        <input type="text" id="studentNumber" placeholder="学籍番号を入力">
-
-        <label for="studentName">名前：</label>
-        <input type="text" id="studentName" placeholder="名前を入力">
-
-        <label for="class">クラス：</label>
-        <input type="text" id="class" placeholder="クラスを入力">
-        <select id="department">
-            <option value="システム開発">システム開発</option>
-            <option value="高度システム開発">高度システム開発</option>
-        </select>
-
-        <label for="attendanceTime">登校時間：</label>
-        <input type="time" id="attendanceTime">
-
-        <label for="exitTime">退出時間：</label>
-        <input type="time" id="exitTime">
-
-        <label for="status">状況：</label>
         <select id="status">
             <option value="出席">出席</option>
             <option value="遅刻">遅刻</option>
             <option value="早退">早退</option>
             <option value="欠席">欠席</option>
         </select>
-
-        <button onclick="addAttendance()">追加</button>
     </div>
 
     <table>
@@ -81,43 +57,4 @@
             </tr>
         </tbody>
     </table>
-
 </div>
-
-<script>
-    // 期間フィルターの処理
-    function filterPeriod(period) {
-        console.log(period + "を選択しました");
-        // ここでフィルタリングロジックを実装する
-    }
-
-    // 出席情報の追加処理
-    function addAttendance() {
-        const studentNumber = document.getElementById('studentNumber').value;
-        const studentName = document.getElementById('studentName').value;
-        const studentClass = document.getElementById('class').value;
-        const department = document.getElementById('department').value;
-        const attendanceTime = document.getElementById('attendanceTime').value || '--:--';
-        const exitTime = document.getElementById('exitTime').value || '--:--';
-        const status = document.getElementById('status').value;
-        const date = new Date().toISOString().slice(0, 10);
-
-        // 新しい行をテーブルに追加
-        const table = document.getElementById('attendanceData');
-        const newRow = table.insertRow();
-
-        newRow.innerHTML = `
-            <td contenteditable="true">${studentNumber}</td>
-            <td contenteditable="true">${studentName}</td>
-            <td contenteditable="true">${studentClass}</td>
-            <td contenteditable="true">${department}</td>
-            <td contenteditable="true">${date}</td>
-            <td contenteditable="true">${status}</td>
-            <td contenteditable="true">${attendanceTime}</td>
-            <td contenteditable="true">${exitTime}</td>
-        `;
-    }
-</script>
-{% endblock %}
-</body>
-</html>
