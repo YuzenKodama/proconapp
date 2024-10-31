@@ -7,24 +7,32 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>ログイン</h1>
-        
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <div>
-                <label for="student_id">学生番号:</label>
-                <input type="text" name="student_id" required>
-            </div>
-            <div>
-                <label for="password">パスワード:</label>
-                <input type="password" name="password" required>
-            </div>
-            <a href="{% url 'change_pass' %}">パスワードを忘れた方はこちら</a>
-            <div>
-                <button type="submit">ログイン</button>
-            </div>
-        </form>
-    </div>
+    <h1>ログイン</h1>
+    
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div>
+            <label for="student_id">学生番号:</label>
+            <input type="text" name="student_id" required>
+        </div>
+        <div>
+            <label for="password">パスワード:</label>
+            <input type="password" name="password" required>
+        </div>
+        <a href="{% url 'change_pass' %}">パスワードを忘れた方はこちら</a>
+        <div>
+            <button type="submit">ログイン</button>
+        </div>
+    </form>
+
+  
 </body>
 </html>

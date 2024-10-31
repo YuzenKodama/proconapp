@@ -90,10 +90,3 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Messages styling */
-ul {
-    list-style-type: none;
-    padding: 0;
-    color: red;
-    margin-bottom: 20px;
-}

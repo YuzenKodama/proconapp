@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生徒管理アプリ</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script>
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.classList.toggle("show");
+        }
+    </script>
+</head>
 <body>
 {% block student_header %}
 <header>
-    <div class="logo">生徒管理アプリ</div>
+    <div class="logo">生徒</div>
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <div class="dropdown" id="dropdownMenu">
         <a href="/student">出席登録</a>
         <a href="#">出席・出欠確認</a>
-        <a href="/student/changepass">パスワードの変更</a>
+        <a href="/student/changepass">パスワード変更</a>
         <a href="/student/logout">ログアウト</a>
     </div>
 </header>
@@ -16,3 +28,4 @@
 {% block contents %}{% endblock %}
 </body>
 </html>
+
