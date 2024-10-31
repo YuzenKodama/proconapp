@@ -1,72 +1,54 @@
 {% extends "teacher/base.html" %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ja">
 {% block contents %}
-<head>
-    <title>生徒の登校状況の確認</title>
-</head>
-<body>
+<header>
 
-<h1>生徒の登校状況の確認</h1>
+</header>
 
-<div class="container">
-
-    <div class="tabs">
-        <button onclick="filterPeriod('week')">過去一週間</button>
-        <button onclick="filterPeriod('month')">過去一ヶ月</button>
-        <button onclick="filterPeriod('year')">過去一年</button>
-    </div>
-
-    <div class="search-container">
-        <label for="keyword">キーワード：</label>
-        <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
-    </div>
-
-    <div class="student-info">
-        <p>2347089: 児玉悠善 出席確認</p> 
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>日付</th>
-                <th>状況</th>
-                <th>出席時間</th>
-                <th>退出時間</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2024-10-29</td>
-                <td>出席</td>
-                <td>09:10</td>
-                <td>15:10</td>
-            </tr>
-            <tr>
-                <td>2024-10-28</td>
-                <td>遅刻</td>
-                <td>10:00</td>
-                <td>15:00</td>
-            </tr>
-            <tr>
-                <td>2024-10-27</td>
-                <td>欠席</td>
-                <td>--:--</td>
-                <td>--:--</td>
-            </tr>
-            <!-- 必要に応じて他の日付のデータを追加 -->
-        </tbody>
-    </table>
-
+<div class="date-container">
+    <label for="date">日付を選択:</label>
+    <input type="date" id="date" name="date">
+    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
+    <input type="submit" value="検索">
 </div>
+<select id="status">
+    <option value="出席">出席</option>
+    <option value="遅刻">遅刻</option>
+    <option value="早退">早退</option>
+    <option value="欠席">欠席</option>
+</select>
 
-<script>
-    function filterPeriod(period) {
-        console.log(period + "を選択しました");
-        // ここに期間フィルターのロジックを追加
-    }
-</script>
-{% endblock %}
-</body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <th>学籍番号</th>
+            <th>名前</th>
+            <th>クラス</th>
+            <th>出席日数</th>
+            <th>欠席日数</th>
+            <th>確認</th>
+        </tr>
+    </thead>
+    <tbody id="attendanceData">
+        <tr>
+            <td contenteditable="true">123456</td>
+            <td contenteditable="true">田中 太郎</td>
+            <td contenteditable="true">システム開発</td>
+            <td contenteditable="true">120</td>
+            <td contenteditable="true">4</td>
+            <td><a href="situation_edit.html" class="situation_edit-button">確認</a></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">123457</td>
+            <td contenteditable="true">佐藤 花子</td>       
+            <td contenteditable="true">高度システム開発</td>
+            <td contenteditable="true">116</td>
+            <td contenteditable="true">8</td>
+            <td><a href="/situation_edit.html" class="situation_edit-button">確認</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
