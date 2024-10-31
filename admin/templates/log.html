@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログ確認画面</title>
+    <link rel="stylesheet" href="log.css">
+</head>
+<body>
+    <div class="log-screen">
+        <div class="header">
+            <h1>ログ確認画面</h1>
+        </div>
+        <div class="filters">
+    
+            <select id="date-filter">
+                <script>
+                
+                    const startYear = 2024;
+                    const startMonth = 4; 
+                    const endYear = 2025;
+                    const endMonth = 3; 
+                    const dateFilter = document.getElementById('date-filter');
+
+                    for (let year = startYear; year <= endYear; year++) {
+                        for (let month = 1; month <= 12; month++) {
+                            if ((year === startYear && month >= startMonth) || (year === endYear && month <= endMonth)) {
+                                const formattedMonth = month.toString().padStart(2, '0');
+                                const option = document.createElement('option');
+                                option.value = `${year}-${formattedMonth}`;
+                                option.textContent = `${year}年${formattedMonth}月`;
+                                dateFilter.appendChild(option);
+                            }
+                        }
+                    }
+                </script>
+            </select>
+
+    
+            <select id="role-filter">
+                <option value="管理者">管理者</option>
+                <option value="先生">先生</option>
+                <option value="生徒">生徒</option>
+            </select>
+        </div>
+
+        <div class="log-entries">
+            <div class="log-entry">
+                <span class="time">10/05 0:23</span>
+                <span class="user">児玉</span>
+                <span class="action">生徒名更新</span>
+                <span class="details">松浦→児玉</span>
+            </div>
+            <div class="log-entry">
+                <span class="time">10/05 10:56</span>
+                <span class="user">宮崎</span>
+                <span class="action">生徒追加</span>
+                <span class="details">甲木</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

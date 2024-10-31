@@ -1,81 +1,64 @@
-<!-- 生徒の登校状況編集 -->
 {% extends "teacher/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 {% block contents %}
-</head>
+
 <body>
 
 <h1>生徒の登校状況の確認</h1>
 
+<div class="search-container">
+    <label for="keyword">キーワード：</label>
+    <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
+<h2>2347089:児玉悠善出席確認</h2>
+</div>
 <div class="container">
-
-    <div class="tabs">
-        <button onclick="filterPeriod('week')">過去一週間</button>
-        <button onclick="filterPeriod('month')">過去一ヶ月</button>
-        <button onclick="filterPeriod('year')">過去一年</button>
-    </div>
-
-    <div class="search-container">
-        <label for="keyword">キーワード：</label>
-        <input type="text" id="keyword" placeholder="学籍番号や名前を検索">
-    </div>
 
     <table>
         <thead>
-            <tr>
+            <tr>                         
                 <th>日付</th>
-                <th>学籍番号</th>
-                <th>名前</th>
-                <th>クラス</th>
-                <th>出席時間</th>
-                <th>退出時間</th>
-                <th>状況</th>
-            
+                <th>登校時間</th>
+                <th>退出時間</th>   
+                <th>状況</th>            
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>10/29</td>
-                <td>2302139</td>
-                <td>松浦七星</td>
-                <td>システム開発</td>   
-                <td>09:10</td>
-                <td>15:10</td>
-                <td>出席</td>         
-                <td><button onclick="editStatus('2302139')">編集</button></td>
+        <tbody id="attendanceData">
+            <tr> 
+                <td>10-15</td>
+                <td>09:00</td>
+                <td>15:00</td>
+                <td>
+                    <select>
+                        <option value="出席">出席</option>
+                        <option value="遅刻">遅刻</option>
+                        <option value="早退">早退</option>
+                        <option value="欠席">欠席</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td>10/29</td>
-                <td>2302222</td>
-                <td>児玉悠善</td>
-                <td>システム開発</td>   
-                <td>10:10</td>
-                <td>15:10</td>
-                <td>遅刻</td>         
-                <td><button onclick="editStatus('2302222')">編集</button></td>
-            </tr>
-            <tr>
-                <td>10/29</td>
-                <td>2303333</td>
-                <td>田中太郎</td>
-                <td>システム開発</td>   
+                <td>10-16</td>
                 <td>--:--</td>
                 <td>--:--</td>
-                <td>欠席</td>
-                <td><button onclick="editStatus('2303333')">編集</button></td>
+                <td>
+                    <select>
+                        <option value="出席">出席</option>
+                        <option value="遅刻">遅刻</option>
+                        <option value="早退">早退</option>
+                        <option value="欠席" selected>欠席</option>
+                    </select>
+                </td>
             </tr>
         </tbody>
     </table>
 
 </div>
 
-<script>
-    function editStatus(studentNumber) {
-        window.location.href = `situation_confirmation.htm?studentNumber=${studentNumber}`;
-    }
-</script>
 {% endblock %}
 </body>
 </html>
+
+     
+

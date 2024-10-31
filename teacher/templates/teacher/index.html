@@ -8,116 +8,55 @@
 
 </header>
 
-    <div class="date-container">
-        <label for="date">日付を選択:</label>
-        <input type="date" id="date" name="date">
-        <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
-        <input type="submit" value="検索">
-    </div>
-
-    <div class="input-form">
-        <label for="studentNumber">学籍番号：</label>
-        <input type="text" id="studentNumber" placeholder="学籍番号を入力">
-
-        <label for="studentName">名前：</label>
-        <input type="text" id="studentName" placeholder="名前を入力">
-
-        <label for="class">クラス：</label>
-        <input type="text" id="class" placeholder="クラスを入力">
-        <select id="department">
-            <option value="システム開発">システム開発</option>
-            <option value="高度システム開発">高度システム開発</option>
-        </select>
-
-        <label for="attendanceTime">登校時間：</label>
-        <input type="time" id="attendanceTime">
-
-        <label for="exitTime">退出時間：</label>
-        <input type="time" id="exitTime">
-
-        <label for="status">状況：</label>
-        <select id="status">
-            <option value="出席">出席</option>
-            <option value="遅刻">遅刻</option>
-            <option value="早退">早退</option>
-            <option value="欠席">欠席</option>
-        </select>
-
-        <button onclick="addAttendance()">追加</button>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>学籍番号</th>
-                <th>名前</th>
-                <th>クラス</th>
-                <th>日付</th>
-                <th>状況</th>
-                <th>登校時間</th>
-                <th>退出時間</th>
-            </tr>
-        </thead>
-        <tbody id="attendanceData">
-            <tr>
-                <td contenteditable="true">123456</td>
-                <td contenteditable="true">田中 太郎</td>
-                <td contenteditable="true">A1</td>
-                <td contenteditable="true">システム開発</td>
-                <td contenteditable="true">10-15</td>
-                <td contenteditable="true">出席</td>
-                <td contenteditable="true">09:00</td>
-                <td contenteditable="true">15:00</td>
-            </tr>
-            <tr>
-                <td contenteditable="true">123457</td>
-                <td contenteditable="true">佐藤 花子</td>
-                <td contenteditable="true">A2</td>
-                <td contenteditable="true">高度システム開発</td>
-                <td contenteditable="true">10-16</td>
-                <td contenteditable="true">欠席</td>
-                <td contenteditable="true">--:--</td>
-                <td contenteditable="true">--:--</td>
-            </tr>
-        </tbody>
-    </table>
-
+<div class="date-container">
+    <label for="date">日付を選択:</label>
+    <input type="date" id="date" name="date">
+    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
+    <input type="submit" value="検索">
 </div>
+<select id="status">
+    <option value="出席">出席</option>
+    <option value="遅刻">遅刻</option>
+    <option value="早退">早退</option>
+    <option value="欠席">欠席</option>
+</select>
 
-<script>
-    // 期間フィルターの処理
-    function filterPeriod(period) {
-        console.log(period + "を選択しました");
-        // ここでフィルタリングロジックを実装する
-    }
-
-    // 出席情報の追加処理
-    function addAttendance() {
-        const studentNumber = document.getElementById('studentNumber').value;
-        const studentName = document.getElementById('studentName').value;
-        const studentClass = document.getElementById('class').value;
-        const department = document.getElementById('department').value;
-        const attendanceTime = document.getElementById('attendanceTime').value || '--:--';
-        const exitTime = document.getElementById('exitTime').value || '--:--';
-        const status = document.getElementById('status').value;
-        const date = new Date().toISOString().slice(0, 10);
-
-        // 新しい行をテーブルに追加
-        const table = document.getElementById('attendanceData');
-        const newRow = table.insertRow();
-
-        newRow.innerHTML = `
-            <td contenteditable="true">${studentNumber}</td>
-            <td contenteditable="true">${studentName}</td>
-            <td contenteditable="true">${studentClass}</td>
-            <td contenteditable="true">${department}</td>
-            <td contenteditable="true">${date}</td>
-            <td contenteditable="true">${status}</td>
-            <td contenteditable="true">${attendanceTime}</td>
-            <td contenteditable="true">${exitTime}</td>
-        `;
-    }
-</script>
-{% endblock %}
-</body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <th>学籍番号</th>
+            <th>名前</th>
+            <th>クラス</th>
+            <th>日付</th>
+            <th>状況</th>
+            <th>登校時間</th>
+            <th>退出時間</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+    <tbody id="attendanceData">
+        <tr>
+            <td contenteditable="true">123456</td>
+            <td contenteditable="true">田中 太郎</td>
+            <td contenteditable="true">A1</td>
+            <td contenteditable="true">システム開発</td>
+            <td contenteditable="true">10-15</td>
+            <td contenteditable="true">出席</td>
+            <td contenteditable="true">09:00</td>
+            <td contenteditable="true">15:00</td>
+            <td><a href="edit.html" class="edit-button">編集</a></td>
+        </tr>
+        <tr>
+            <td contenteditable="true">123457</td>
+            <td contenteditable="true">佐藤 花子</td>
+            <td contenteditable="true">A2</td>
+            <td contenteditable="true">高度システム開発</td>
+            <td contenteditable="true">10-16</td>
+            <td contenteditable="true">欠席</td>
+            <td contenteditable="true">--:--</td>
+            <td contenteditable="true">--:--</td>
+            <td><a href="/edit.html" class="edit-button">編集</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
