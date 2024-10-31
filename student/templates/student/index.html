@@ -5,17 +5,23 @@
 <html lang="ja">
 {% block contents %}
 <body class="student">
-<h1>現在の時間</h1>
-<div id="clock"></div>
+    <header>
+        <div class="logo">生徒</div>
+        <link rel="stylesheet" href="css/index.css">
+    </header>
 
-<div class="button-container">
-    <button onclick="handleButtonClick('登校')">登校</button>
-    <button onclick="handleButtonClick('下校')">下校</button>
-    <button onclick="handleButtonClick('遅刻')">遅刻</button>
-    <button onclick="handleButtonClick('欠席')">欠席</button>
-</div>
-<script src="{% static 'js/student.js' %}"></script>
-{% endblock %}
+    <div class="clock-container">
+        <div id="clock">09 : 45</div>
+    </div>
 
+    <div class="button-container">
+        <button class="button attendance" onclick="handleButtonClick('出席')">出席</button>
+        <button class="button leave" onclick="handleButtonClick('退出')">退出</button>
+        <button class="button late" onclick="handleButtonClick('遅刻')">遅刻</button>
+        <button class="button absent" onclick="handleButtonClick('欠席')">欠席</button>
+    </div>
+
+    <script src="{% static 'js/student.js' %}"></script>
 </body>
+{% endblock %}
 </html>
