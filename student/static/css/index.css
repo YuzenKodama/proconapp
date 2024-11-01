@@ -16,34 +16,9 @@ body {
     height: 100vh;
 }
 
-/* Header Styling */
-header {
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
-
-.logo {
-    color: #fff;
-}
-
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    color: #fff;
-}
-
-/* Clock Container */
+/* Clock Styling */
 .clock-container {
-    margin: 20px 0;
+    margin-bottom: 30px;
 }
 
 #clock {
@@ -60,7 +35,6 @@ header {
 .button-container {
     display: flex;
     gap: 20px;
-    margin-top: 20px;
 }
 
 /* Button Styling */
@@ -68,22 +42,22 @@ header {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
     border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.attendance {
+.present {
     background-color: #4A90E2; /* Blue */
 }
 
 .leave {
-    background-color: #F5A623; /* Yellow */
+    background-color: #4CAF50; /* Green */
 }
 
 .late {
@@ -92,6 +66,10 @@ header {
 
 .absent {
     background-color: #D0021B; /* Red */
+}
+
+.school-absence {
+    background-color: #F5A623; /* Yellow */
 }
 
 .button:hover {
