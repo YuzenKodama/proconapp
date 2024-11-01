@@ -28,13 +28,13 @@ header {
     font-weight: bold;
 }
 
-
+/* Menu Icon Styling */
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-
+/* Dropdown Menu Styling */
 .dropdown {
     display: none;
     flex-direction: column;
@@ -59,7 +59,7 @@ header {
     background-color: #444;
 }
 
-
+/* Show Dropdown Menu */
 .show {
     display: flex;
 }
