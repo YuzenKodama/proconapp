@@ -1,17 +1,17 @@
-/* Basic Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
 }
 
-/* Header Styling */
+
 header {
     background-color: #333;
     color: #fff;
@@ -22,19 +22,19 @@ header {
     position: relative;
 }
 
-/* Logo Styling */
+
 .logo {
     font-size: 24px;
     font-weight: bold;
 }
 
-/* Menu Icon Styling */
+
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-/* Dropdown Menu Styling */
+
 .dropdown {
     display: none;
     flex-direction: column;
@@ -59,7 +59,7 @@ header {
     background-color: #444;
 }
 
-/* Show Dropdown Menu */
+
 .show {
     display: flex;
 }
