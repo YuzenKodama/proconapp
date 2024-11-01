@@ -1,36 +1,29 @@
 # student/views.py
 from django.shortcuts import render,redirect
-
-
-
-from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Attendance, Calendar
 from .forms import AttendanceForm
+
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def student_home(request):
+    current_date = timezone.now().date().isoformat()  # YYYY-MM-DD形式に変換
     if request.method == 'POST':
         form = AttendanceForm(request.POST)
         if form.is_valid():
-            Attendance = form.save(commit=False)
-            Attendance.student = request.user  # 現在のユーザーを取得
-            Attendance.attendance_time = timezone.now().time()  # 現在の時間を設定
-            Attendance.reason = None  # 理由はnullで設定
-            Attendance.save()
-            return redirect('student_home')  # 登録成功後のリダイレクト先を適宜変更
+            attendance = form.save(commit=False)
+            attendance.student = request.user
+            attendance.attendance_time = timezone.now().time()
+            attendance.reason = None
+            attendance.save()
+            return redirect('student_home')
     else:
         form = AttendanceForm()
 
-    # カレンダーから日付を選ぶための情報を取得
-    calendar_dates = Calendar.objects.all()
-
     return render(request, 'student/index.html', {
         'form': form,
-        'calendar_dates': calendar_dates,
+        'current_date': current_date,  # 現在の日付をテンプレートに渡す
     })
-
 
 def student_reason(request):
     return render(request, 'student/reason.html')

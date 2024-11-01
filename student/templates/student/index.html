@@ -18,12 +18,9 @@
         {% csrf_token %}
         <div class="form-container">
             <label for="date">日付:</label>
-            <select name="date" required>
-                {% for calendar in calendar_dates %}
-                    <option value="{{ calendar.date }}">{{ calendar.date }}</option>
-                {% endfor %}
-            </select>
+            <input type="date" name="date" value="{{ current_date }}" required readonly>
         </div>
+        
 
         <div class="button-container">
             <button type="submit" name="status" value="present" class="button attendance">出席</button>
