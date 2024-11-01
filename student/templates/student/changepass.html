@@ -5,21 +5,29 @@
 <html lang="ja">
 {% block contents %}
 <body>
-<h1>パスワード変更</h1>
-<form id="passwordChangeForm">
-    <label for="currentPassword">現在のパスワード:</label>
-    <input type="password" id="currentPassword" name="currentPassword" required>
+    <header>
+        <div class="logo">STUDENT</div>
+        <div class="menu-icon">☰</div>
+        <link rel="stylesheet" href="css/changepass.css">
+    </header>
 
-    <label for="newPassword">新しいパスワード:</label>
-    <input type="password" id="newPassword" name="newPassword" required>
+    <div class="changepass-container">
+        <h1>パスワード変更</h1>
+        <form id="passwordChangeForm">
+            <label for="currentPassword">パスワード</label>
+            <input type="password" id="currentPassword" name="currentPassword" required class="password-input">
 
-    <label for="confirmPassword">確認用パスワード:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <label for="newPassword">新パスワード</label>
+            <input type="password" id="newPassword" name="newPassword" required class="password-input">
 
-    <button type="submit">変更</button>
-</form>
-<script src="{% static 'js/student.js' %}"></script>
-{% endblock %}
+            <label for="confirmPassword">確認用パスワード</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required class="password-input">
 
+            <button type="submit" class="change-button">変更</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/student.js' %}"></script>
 </body>
+{% endblock %}
 </html>

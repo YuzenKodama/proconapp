@@ -5,11 +5,21 @@
 <html lang="ja">
 {% block contents %}
 <body class="student">
-<div class="message">ログアウトしますか？</div>
-<button id="yesButton">はい</button>
-<button id="noButton" class="cancel">いいえ</button>
-<script src="{% static 'js/student.js' %}"></script>
+    <header>
+        <div class="logo">生徒</div>
+        <div class="menu-icon">☰</div>
+    </header>
 
+    <div class="logout-container">
+        <p class="message">ログアウトしますか？</p>
+        <div class="button-group">
+            <button id="yesButton" class="yes-button">はい</button>
+            <button id="noButton" class="no-button">いいえ</button>
+        </div>
+    </div>
+
+    <script src="{% static 'js/student.js' %}"></script>
 </body>
 {% endblock %}
 </html>
+
