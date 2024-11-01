@@ -1,27 +1,31 @@
-{% extends "student/base.html" %}
-{% load static %}
-
+{% extends "student/base.html"%}
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>出席登録</title>
+</head>
 {% block contents %}
-<body class="student">
-    <header>
-        <div class="logo">生徒</div>
-        <link rel="stylesheet" href="css/index.css">
-    </header>
+<body>
+    <h1>出席登録</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="date">日付:</label>
+        <select name="date" required>
+            {% for calendar in calendar_dates %}
+                <option value="{{ calendar.date }}">{{ calendar.date }}</option>
+            {% endfor %}
+        </select><br>
 
-    <div class="clock-container">
-        <div id="clock">09 : 45</div>
-    </div>
+        <label for="status">出席状況:</label><br>
+        <button type="submit" name="status" value="present">出席</button>
+        <button type="submit" name="status" value="late">遅刻</button>
+        <button type="submit" name="status" value="leave_early">早退</button>
+        <button type="submit" name="status" value="absent">欠席</button>
+        <button type="submit" name="status" value="school_absence">校欠</button><br>
 
-    <div class="button-container">
-        <button class="button attendance" onclick="handleButtonClick('出席')">出席</button>
-        <button class="button leave" onclick="handleButtonClick('退出')">退出</button>
-        <button class="button late" onclick="handleButtonClick('遅刻')">遅刻</button>
-        <button class="button absent" onclick="handleButtonClick('欠席')">欠席</button>
-    </div>
-
-    <script src="{% static 'js/student.js' %}"></script>
+        <button type="submit">登録</button>
+    </form>
 </body>
 {% endblock %}
 </html>

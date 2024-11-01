@@ -9,6 +9,4 @@ urlpatterns = [
     path('edit/', admin_edit, name='edit'),
     path('holiday/', admin_changepass, name='changepass'),
     path('logout/', admin_logout, name='logout'),
-    path('logout/',  admin_index, name=' admin_situation_confirmation'),
-    path('logout/', admin_log, name='log'),
 ]
