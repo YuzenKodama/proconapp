@@ -1,0 +1,87 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 100vh;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Logout Container */
+.logout-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Message Styling */
+.message {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Button Styling */
+.yes-button, .no-button {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.yes-button {
+    background-color: #4A90E2; /* Blue */
+    color: #fff;
+}
+
+.no-button {
+    background-color: #ddd; /* Gray */
+    color: #777;
+}
+
+.yes-button:hover {
+    opacity: 0.8;
+}
+
+.no-button:hover {
+    opacity: 0.8;
+}

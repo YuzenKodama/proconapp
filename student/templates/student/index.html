@@ -3,17 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>出席登録</title>
+</head>
 {% block contents %}
-<body class="student">
-    <header>
-        <div class="logo">出席登録</div>
-        <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    </header>
-
-    <div class="clock-container">
-        <div id="clock">{{ current_time }}</div>
-    </div>
-
+<body>
+    <h1>出席登録</h1>
     <form method="POST">
         {% csrf_token %}
         <div class="form-container">
