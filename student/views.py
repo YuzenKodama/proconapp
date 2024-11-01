@@ -14,12 +14,12 @@ def student_home(request):
     if request.method == 'POST':
         form = AttendanceForm(request.POST)
         if form.is_valid():
-            attendance = form.save(commit=False)
-            attendance.student = request.user  # 現在のユーザーを取得
-            attendance.attendance_time = timezone.now().time()  # 現在の時間を設定
-            attendance.reason = None  # 理由はnullで設定
-            attendance.save()
-            return redirect('attendance_success')  # 登録成功後のリダイレクト先を適宜変更
+            Attendance = form.save(commit=False)
+            Attendance.student = request.user  # 現在のユーザーを取得
+            Attendance.attendance_time = timezone.now().time()  # 現在の時間を設定
+            Attendance.reason = None  # 理由はnullで設定
+            Attendance.save()
+            return redirect('student_home')  # 登録成功後のリダイレクト先を適宜変更
     else:
         form = AttendanceForm()
 
