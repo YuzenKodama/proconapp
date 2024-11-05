@@ -21,7 +21,7 @@
     <div class="dropdown" id="dropdownMenu">
         <a href="/student">出席登録</a>
         <a href="#">出席・出欠確認</a>
-        <a href="/student/changepass">パスワード変更</a>
+        <a href="{% url 'login:password_change' %}">パスワード変更</a>
         <a href="/student/logout">ログアウト</a>
     </div>
 </header>
