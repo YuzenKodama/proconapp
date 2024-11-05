@@ -6,11 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>出席登録</title>
-{% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 {% block contents %}
 <body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <h1>出席登録</h1>
     <form method="POST">
         {% csrf_token %}
