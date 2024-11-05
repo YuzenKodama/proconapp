@@ -5,7 +5,7 @@ from .forms import AttendanceForm
 
 from django.contrib.auth.decorators import login_required
 
-@login_required
+#@login_required
 def student_home(request):
     current_date = timezone.now().date().isoformat()  # YYYY-MM-DD形式に変換
     if request.method == 'POST':
