@@ -1,11 +1,11 @@
-/* Reset */
+/* リセット */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
+/* ボディ */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -16,7 +16,7 @@ body {
     height: 100vh;
 }
 
-/* Clock Styling */
+/* クロック */
 .clock-container {
     margin-bottom: 30px;
 }
@@ -31,13 +31,13 @@ body {
     text-align: center;
 }
 
-/* Button Container */
+/* ボタンコンテナ */
 .button-container {
     display: flex;
     gap: 20px;
 }
 
-/* Button Styling */
+/* ボタンスタイリング */
 .button {
     width: 80px;
     height: 80px;
@@ -53,23 +53,23 @@ body {
 }
 
 .present {
-    background-color: #4A90E2; /* Blue */
+    background-color: #4A90E2; 
 }
 
 .leave {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
 }
 
 .late {
-    background-color: #9B9B9B; /* Gray */
+    background-color: #9B9B9B;
 }
 
 .absent {
-    background-color: #D0021B; /* Red */
+    background-color: #D0021B; 
 }
 
 .school-absence {
-    background-color: #F5A623; /* Yellow */
+    background-color: #F5A623; 
 }
 
 .button:hover {
