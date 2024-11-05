@@ -1,0 +1,44 @@
+{% extends 'login/changebase.html' %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+    {% block changepassheader%}
+    <body>
+        <header>
+        {% if user.role == 0 %}
+            {% include 'student/base.html' %}
+        {% elif user.role == 1 %}
+        {% include 'teacher/base.html' %}
+        {% elif user.role == 2 %}
+            {% include 'admin/base.html' %}
+        {% else %}
+            <!-- デフォルトのヘッダー -->
+            <header><nav><ul><li><a href="#">ホーム</a></li></ul></nav></header>
+        {% endif %}
+      
+        <link rel="stylesheet" href="{% static 'css/changepass.css' %}">
+    </header>
+    {% endblock %}
+
+{% block contents %}
+    <div class="changepass-container">
+        <h1>パスワード変更</h1>
+        <form method="post" id="passwordChangeForm">
+            {% csrf_token %}
+            <label for="currentPassword">現在のパスワード</label>
+            <input type="password" id="currentPassword" name="currentPassword" required class="password-input">
+
+            <label for="newPassword">新しいパスワード</label>
+            <input type="password" id="newPassword" name="newPassword" required class="password-input">
+
+            <label for="confirmPassword">確認用パスワード</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required class="password-input">
+
+            <button type="submit" class="change-button">変更</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>
