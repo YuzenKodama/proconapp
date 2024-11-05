@@ -13,21 +13,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* 高さの代わりに最小の高さを設定 */
+    min-height: 100vh;
 }
 
-/* クロック */
-.clock-container {
-    margin-bottom: 30px;
-}
-
-#clock {
-    font-size: 36px;
+/* 日付コンテナ */
+.date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    font-size: 16px;
     font-weight: bold;
-    color: #fff;
-    background-color: #333;
-    padding: 10px 20px;
-    border-radius: 8px;
     text-align: center;
 }
 
@@ -53,7 +50,7 @@ body {
 }
 
 .present {
-    background-color: #4A90E2; 
+    background-color: #4A90E2;
 }
 
 .late {
@@ -61,14 +58,15 @@ body {
 }
 
 .leave {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
 }
 
 .absent {
-    background-color: #D0021B; 
+    background-color: #D0021B;
 }
+
 .school-absence {
-    background-color: #e1ca1e; 
+    background-color: #e1ca1e;
 }
 
 .button:hover {

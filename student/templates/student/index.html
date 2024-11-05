@@ -1,17 +1,7 @@
 {% extends "student/base.html" %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>出席登録</title>
-</head>
 {% block contents %}
-<body>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <h1>出席登録</h1>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
     <form method="POST">
         {% csrf_token %}
         <div class="form-container">
@@ -25,13 +15,11 @@
             <button type="submit" name="status" value="late" class="button late">遅刻</button>
             <button type="submit" name="status" value="leave_early" class="button leave">早退</button>
             <button type="submit" name="status" value="absent" class="button absent">欠席</button>
-            <button type="submit" name="status" value="school-absence" class="button school-absence">校欠</button>
+            <button type="submit" name="status" value="school-absence" class="button school-absence">公欠</button>
         </div>
     </form>
 
-    <script src="{% static 'js/student.js' %}"></script>
-</body>
+<script src="{% static 'js/student.js' %}"></script>
 {% endblock %}
-</html>
 
 

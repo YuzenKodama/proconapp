@@ -1,21 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生徒管理アプリ</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <script>
-        function toggleDropdown() {
-            var dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.classList.toggle("show");
-        }
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>生徒管理アプリ</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <script>
+            function toggleDropdown() {
+                var dropdownMenu = document.getElementById("dropdownMenu");
+                dropdownMenu.classList.toggle("show");
+            }
+            </script>
+    </head>
 <body>
-{% block student_header %}
-<header>
+    <header>
     <div class="logo">生徒</div>
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <div class="dropdown" id="dropdownMenu">
@@ -24,9 +23,8 @@
         <a href="{% url 'login:password_change' %}">パスワード変更</a>
         <a href="/student/logout">ログアウト</a>
     </div>
-</header>
-{% endblock %}
-{% block contents %}{% endblock %}
+    </header>
+    {% block contents %}{% endblock %}
 </body>
 </html>
 
