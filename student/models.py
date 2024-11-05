@@ -17,6 +17,3 @@ class Attendance(models.Model):
     status = models.CharField(max_length=20, choices=ATTENDANCE_STATUS_CHOICES)  # 出席状況
     attendance_time = models.TimeField(null=True, blank=True)  # 出席時間
     reason = models.TextField(null=True, blank=True)  # 欠席、早退、遅刻理由
-
-    def __str__(self):
-        return f"{self.student} - {self.date} - {self.status}"
