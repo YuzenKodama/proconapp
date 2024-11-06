@@ -14,6 +14,7 @@ def change_pass(request):
     return render(request, 'login/Password.html')
 
 def login_view(request):
+    print("login_view", request)
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
         password = request.POST.get('password')
@@ -48,4 +49,4 @@ class CustomPasswordChangeView(PasswordChangeView):
 
 # パスワード変更完了ページビュー
 class PasswordChangeDoneView(TemplateView):
-    template_name = 'login/change_pass.html'  # 完了ページのテンプレート
+    template_name = 'login/changepass.html'  # 完了ページのテンプレート
