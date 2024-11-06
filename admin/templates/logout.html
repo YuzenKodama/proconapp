@@ -1,0 +1,15 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+{% block contents %}
+<body class="teacher">
+<div class="message">ログアウトしますか？</div>
+<button id="yesButton">はい</button>
+<button id="noButton" class="cancel">いいえ</button>
+<script src="{% static 'js/teacher.js' %}"></script>
+
+</body>
+{% endblock %}
+</html>
