@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
         TEACHER = 1
         ADMIN = 2
     # user_permissionsフィールドの修正
+    is_staff = models.BooleanField(default=False)  # 管理画面へのアクセス権
     user_permissions = models.ManyToManyField(
         'auth.Permission', 
         blank=True, 

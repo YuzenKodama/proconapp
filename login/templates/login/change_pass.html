@@ -4,41 +4,49 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-    {% block changepassheader%}
-    <body>
-        <header>
+{% block changepassheader %}
+<body>
+    <header>
         {% if user.role == 0 %}
             {% include 'student/base.html' %}
         {% elif user.role == 1 %}
-        {% include 'teacher/base.html' %}
+            {% include 'teacher/base.html' %}
         {% elif user.role == 2 %}
             {% include 'admin/base.html' %}
         {% else %}
             <!-- デフォルトのヘッダー -->
             <header><nav><ul><li><a href="#">ホーム</a></li></ul></nav></header>
         {% endif %}
-      
         <link rel="stylesheet" href="{% static 'css/changepass.css' %}">
     </header>
-    {% endblock %}
+{% endblock %}
 
 {% block contents %}
-    <div class="changepass-container">
-        <h1>パスワード変更</h1>
-        <form method="post" id="passwordChangeForm">
-            {% csrf_token %}
-            <label for="currentPassword">現在のパスワード</label>
-            <input type="password" id="currentPassword" name="currentPassword" required class="password-input">
+<div class="changepass-container">
+    <h1>パスワード変更</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.old_password.id_for_label }}">現在のパスワード</label>
+            {{ form.old_password }} <!-- 現在のパスワードフィールド -->
+        </div>
 
-            <label for="newPassword">新しいパスワード</label>
-            <input type="password" id="newPassword" name="newPassword" required class="password-input">
+        <div class="form-group">
+            <label for="{{ form.new_password1.id_for_label }}">新しいパスワード</label>
+            {{ form.new_password1 }} <!-- 新しいパスワードフィールド -->
+        </div>
 
-            <label for="confirmPassword">確認用パスワード</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required class="password-input">
+        <div class="form-group">
+            <label for="{{ form.new_password2.id_for_label }}">確認用パスワード</label>
+            {{ form.new_password2 }} <!-- 確認用パスワードフィールド -->
+        </div>
 
+        <div class="form-group">
             <button type="submit" class="change-button">変更</button>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 </body>
 {% endblock %}
 </html>
