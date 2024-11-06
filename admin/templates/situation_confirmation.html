@@ -1,0 +1,65 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+{% block contents %}
+    <div class="date-container">
+        <label for="date">日付を選択:</label>
+        <input type="date" id="date" name="date">
+        <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
+        <input type="submit" value="検索">
+    </div>
+
+
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th>学籍番号</th>
+            <th>クラス</th>
+            <th>登校時間</th>
+            <th>退出時間</th>
+            <th>状況</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+
+
+    <div class="input-form">
+        <label for="studentNumber"></label>
+        <input type="text" id="studentNumber" placeholder="学籍番号を入力">
+
+        <label for="studentName"></label>
+        <input type="text" id="studentName" placeholder="名前を入力">
+
+        <label for="class"></label>
+        <input type="text" id="class" placeholder="クラスを入力">
+
+        <label for="attendanceTime"></label>
+        <input type="time" id="attendanceTime">
+
+        <label for="exitTime"></label>
+        <input type="time" id="exitTime">
+
+        <label for="status"></label>
+        <select id="status">
+            <option value="出席">出席</option>
+            <option value="遅刻">遅刻</option>
+            <option value="早退">早退</option>
+            <option value="欠席">欠席</option>
+        </select>
+
+        <button onclick="addAttendance()">追加</button>
+    </div>
+
+<script>
+    // 期間フィルターの処理
+    function filterPeriod(period) {
+        console.log(period + "を選択しました");
+    
+    }
+
+</script>
+{% endblock %}
+</body>
+</html>
