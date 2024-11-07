@@ -1,17 +1,12 @@
 {% extends "student/base.html" %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="ja">
 {% block contents %}
-{% load static %}
 <link rel="stylesheet" href="{% static 'css/logout.css' %}">
 <body class="student">
-   
     <div class="logout-container">
         <p class="message">ログアウトしますか？</p>
         <div class="button-group">
-            <button id="yesButton" class="yes-button">はい</button>
+            <a href="{% url 'login:signout' %}" id="yesButton" class="yes-button">はい</a>
             <button id="noButton" class="no-button">いいえ</button>
         </div>
     </div>

@@ -1,5 +1,6 @@
 # student/views.py
 from django.shortcuts import render
+from .forms import HolidayFormClass
 
 def teacher_base(request):
     return render(request, 'teacher/base.html')
@@ -14,7 +15,11 @@ def teacher_edit(request):
     return render(request, 'teacher/edit.html')
 
 def teacher_holiday(request):
-    return render(request, 'teacher/holiday.html')
+    template_name = "holiday.html"
+    form = HolidayFormClass()
+    ctx = {}
+    ctx["form"] = form
+    return render(request, template_name, ctx)
 
 def teacher_logout(request):
     return render(request, 'teacher/logout.html')

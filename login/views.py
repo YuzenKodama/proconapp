@@ -1,14 +1,13 @@
 # login/views.py
 from django.shortcuts import render,redirect,HttpResponseRedirect
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
+from django.contrib.auth.views import LogoutView
 from django.contrib import messages
 from .models import CustomUser
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from django.contrib.auth.views import PasswordChangeView
 
-def login_home(request):
-
-    return render(request, 'login/login.html')
 
 def change_pass(request):
     return render(request, 'login/Password.html')
@@ -23,7 +22,7 @@ def login_view(request):
         try:
             user = CustomUser.objects.get(student_id=student_id)
         except CustomUser.DoesNotExist:
-            messages.error(request, "IDかパスワードが無効です。")
+            messages.error(request, "IDが無効です。")
             return render(request, 'login/login.html')  # GETリクエストの場合の処理
             
         if user.password == password:
@@ -41,10 +40,16 @@ def login_view(request):
     
     return render(request, 'login/login.html')  # GETリクエストの場合の処理
 
-# views.py
-from django.contrib.auth.views import PasswordChangeView
-from django.urls import reverse_lazy
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'login/change_pass.html'
     success_url = reverse_lazy('password_change_done')  # 変更後のリダイレクト先
+
+class CustomLogoutView(LogoutView):
+    def get(self, request, *args, **kwargs):
+        messages.info(request, "ログアウトしました。")
+        return super().get(request, *args, **kwargs)
+
+
+def logout_page(request):
+    return render(request, 'login/logout.html')

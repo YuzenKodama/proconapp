@@ -9,5 +9,5 @@ urlpatterns = [
     path('edit/', teacher_edit, name='edit'),
     path('holiday/', teacher_holiday, name='holiday'),
     path('changepass/', teacher_changepass, name='changepass'),
-    path('logout/', teacher_logout, name='logout'),
+    path('logout/', teacher_logout, name='t_logout'),
 ]
