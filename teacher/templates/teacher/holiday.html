@@ -1,5 +1,8 @@
 {% extends "teacher/base.html" %}
 {% load static %}
 {% block contents %}
-
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">変更</button>
+</form>
 {% endblock %}
