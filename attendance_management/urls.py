@@ -23,4 +23,5 @@ urlpatterns = [
     path('student/', include('student.urls')),  # アプリのURLを追加
     path('teacher/', include('teacher.urls')),  # アプリのURLを追加
     path('date/', include('date.urls')),  # アプリのURLを追加
+    path('manager/', include('manager.urls')),  # アプリのURLを追加
 ]
