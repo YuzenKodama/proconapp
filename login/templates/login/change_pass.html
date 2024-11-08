@@ -22,22 +22,18 @@
     <h1>パスワード変更</h1>
     <form method="post">
         {% csrf_token %}
-        
         <div class="form-group">
             <label for="{{ form.old_password.id_for_label }}">現在のパスワード</label>
             {{ form.old_password }} <!-- 現在のパスワードフィールド -->
         </div>
-
         <div class="form-group">
             <label for="{{ form.new_password1.id_for_label }}">新しいパスワード</label>
             {{ form.new_password1 }} <!-- 新しいパスワードフィールド -->
         </div>
-
         <div class="form-group">
             <label for="{{ form.new_password2.id_for_label }}">確認用パスワード</label>
             {{ form.new_password2 }} <!-- 確認用パスワードフィールド -->
         </div>
-
         <div class="form-group">
             <button type="submit" class="change-button">変更</button>
         </div>
