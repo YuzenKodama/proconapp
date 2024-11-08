@@ -15,9 +15,11 @@ def teacher_edit(request):
     return render(request, 'teacher/edit.html')
 
 def teacher_holiday(request):
-    template_name = "holiday.html"
-    form = HolidayFormClass()
+    template_name = "teacher/holiday.html"
+    form = HolidayFormClass(request.POST or None)
     ctx = {}
+    if form.is_valid():
+        is_holiday = form.cleaned_data["is_holiday"]
     ctx["form"] = form
     return render(request, template_name, ctx)
 
