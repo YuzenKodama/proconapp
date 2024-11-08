@@ -1,91 +1,48 @@
 <!--生徒の情報-->
+
 {% extends "manager/base.html" %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ja">
 {% block contents %}
-<head>
-    <title>先生管理画面</title>
-</head>
-<body>
+<header>
 
-<h1>先生管理画面</h1>
+</header>
 
-<div class="container">
-
-    <div class="search-container">
-        <label for="keyword">キーワードを入力：</label>
-        <input type="text" id="keyword" placeholder="検索キーワード">
-    </div>
-
-    <div class="input-form">
-        <h2>先生情報の入力</h2>
-        <label for="teacherId">学籍番号:</label>
-        <input type="text" id="teacherId" placeholder="IDを入力">
-
-        <label for="teacherName">名前：</label>
-        <input type="text" id="teacherName" placeholder="名前を入力">
-
-        <label for="classDepartment">クラス・学科：</label>
-        <input type="text" id="classDepartment" placeholder="クラス・学科を入力">
-
-        <label for="email">メールアドレス：</label>
-        <input type="email" id="email" placeholder="メールアドレスを入力">
-
-        <label for="statusFlag">在籍フラグ：</label>
-        <select id="statusFlag">
-            <option value="在籍">在籍</option>
-            <option value="退職">退職</option>
-        </select>
-
-        <button onclick="addTeacher()">追加</button>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>学籍番号</th>
-                <th>名前</th>
-                <th>クラス・学科</th>
-                <th>メールアドレス</th>
-                <th>在籍フラグ</th>
-            </tr>
-        </thead>
-        <tbody id="teacherData">
-        
-        </tbody>
-    </table>
-
+<h1>生徒情報確認</h1>
+<div class="date-container">
+    <label for="date">日付を選択:</label>
+    <input type="date" id="date" name="date">
+    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
+    <input type="submit" value="検索">
 </div>
 
-<script>
-    function addTeacher() {
-        const teacherId = document.getElementById('teacherId').value;
-        const teacherName = document.getElementById('teacherName').value;
-        const classDepartment = document.getElementById('classDepartment').value;
-        const email = document.getElementById('email').value;
-        const statusFlag = document.getElementById('statusFlag').value;
-
-        
-        const table = document.getElementById('teacherData');
-        const newRow = table.insertRow();
-
-        newRow.innerHTML = `
-            <td>${teacherId}</td>
-            <td>${teacherName}</td>
-            <td>${classDepartment}</td>
-            <td>${email}</td>
-            <td>${statusFlag === '在籍' ? '✓' : '✗'}</td>
-        `;
-
-    
-        document.getElementById('teacherId').value = '';
-        document.getElementById('teacherName').value = '';
-        document.getElementById('classDepartment').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('statusFlag').value = '在籍';
-    }
-</script>
-{% endblock %}
-</body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <th>学籍番号</th>
+            <th>名前</th>
+            <th>クラス</th>
+            <th>メールアドレス</th>
+        </tr>
+    </thead>
+    <tbody id="attendanceData">
+        <tr>
+            <td contenteditable="true">123456</td>
+            <td contenteditable="true">田中 太郎</td>
+            <td contenteditable="true">システム開発</td>
+            <td contenteditable="true">tanaka@icloud.com </td>
+           
+           
+        </tr>
+        <tr>
+            <td contenteditable="true">543216</td>
+            <td contenteditable="true">渡辺 徹</td>
+            <td contenteditable="true">システム開発</td>
+            <td contenteditable="true">watanabe@icloud.com </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+{%endblock %}

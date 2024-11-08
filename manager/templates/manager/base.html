@@ -6,10 +6,10 @@
     <div class="logo">生徒管理アプリ</div>
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <div class="dropdown" id="dropdownMenu">
-        <a href="/situation_edit">登校状況確認</a>
-        <a href="/student_management/">生徒情報確認</a>
-        <a href="/manager/">生徒の追加</a>
-        <a href="/teacher_management/">先生情報確認</a>
+        <a href="{% url 'manager_home' %}">登校状況確認</a>
+        <a href="{% url 'student_management' %}">生徒情報確認</a>
+        <a href="//">生徒の追加</a>
+        <a href="{% url 'teacher_management' %}">先生情報確認</a>
         <a href="//">先生の追加</a>
         <a href="//">先生の削除</a>
         <a href="log/">ログ確認</a>
