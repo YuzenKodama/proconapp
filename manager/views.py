@@ -8,7 +8,7 @@ def manager_log(request):
     return render(request, 'manager/log.html')
 
 def manager_situation_edit(request):
-    return render(request, 'manager/lsituation_edit.html')
+    return render(request, 'manager/situation_edit.html')
 
 def manager_student_management(request):
     return render(request, 'manager/student_management.html')
