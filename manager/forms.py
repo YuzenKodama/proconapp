@@ -1,6 +1,5 @@
 from django import forms
-from date.models import Addition
-
+from login.models import CustomUser
 class additionFormClass(forms.Form):
     ID = forms.StudentID()  
     name = forms.name()
