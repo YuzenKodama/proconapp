@@ -1,0 +1,11 @@
+<!-- bulk_update_holidays.html -->
+ {% extends 'base.html'%}
+ {% block contents %}
+<h1>{{ year }}年{{ month }}月の休日フラグ一括変更</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">変更を保存</button>
+</form>
+<a href="{% url 'teacher:calendar_list' year month %}">カレンダーに戻る</a>
+{% endblock %}

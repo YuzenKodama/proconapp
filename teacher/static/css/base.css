@@ -1,0 +1,67 @@
+/* リセットスタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全体の背景色とフォント設定 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* ロゴのスタイル */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* メニューアイコンのスタイル（ハンバーガーメニュー） */
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ドロップダウンメニューの基本スタイル */
+.dropdown {
+    display: none;  /* 初期状態では非表示 */
+    flex-direction: column;
+    position: absolute;
+    top: 50px;  /* ヘッダーの下に配置 */
+    right: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ドロップダウンメニュー内リンクのスタイル */
+.dropdown a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 10px;
+    font-size: 16px;
+    display: block;
+}
+
+/* ホバー時のリンクの背景色変更 */
+.dropdown a:hover {
+    background-color: #444;
+}
+
+/* ドロップダウンメニューを表示するためのクラス */
+.show {
+    display: flex;  /* メニューが表示される */
+}

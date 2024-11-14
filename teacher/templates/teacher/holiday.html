@@ -1,8 +1,43 @@
 {% extends "teacher/base.html" %}
 {% load static %}
 {% block contents %}
-<form method="POST">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">変更</button>
-</form>
+<!-- month_calendar.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ year }}年{{ month }}月のカレンダー</title>
+</head>
+<body>
+    <h1>{{ year }}年{{ month }}月のカレンダー</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in calendar_days %}
+                <tr>
+                    {% for day in week %}
+                        <td>
+
+                            <small>{{ day.is_holiday|yesno:"休み,登校日" }}</small>
+                        </td>
+                    {% empty %}
+                        <td></td> <!-- 空の日付セル -->
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
 {% endblock %}
