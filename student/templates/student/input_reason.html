@@ -1,0 +1,10 @@
+{% extends 'student/base.html' %}
+{% block contents%}
+<h1>{{ attendance.date.date|date:"Y/m/d" }} の理由入力</h1>  <!-- 日付フォーマット -->
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登録</button>
+</form>
+<a href="{% url 'attendance_list' %}">戻る</a>
+{% endblock %}

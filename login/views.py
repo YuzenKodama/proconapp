@@ -48,6 +48,7 @@ class CustomPasswordChangeView(PasswordChangeView):
 class CustomLogoutView(LogoutView):
     def get(self, request, *args, **kwargs):
         messages.info(request, "ログアウトしました。")
+        logout(request)
         return super().get(request, *args, **kwargs)
 
 

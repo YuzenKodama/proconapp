@@ -6,11 +6,14 @@ from django.contrib import messages
 import calendar
 from datetime import datetime, timedelta
 
-def teacher_base(request):
-    return render(request, 'teacher/base.html')
+
 
 def teacher_home(request):
-    return render(request, 'teacher/index.html')
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    # 最新の年月のカレンダー一覧ページにリダイレクト
+    return redirect('teacher:teacher_home', year=year, month=month)
 
 def teacher_changepass(request):
     return render(request, 'teacher/changepass.html')
@@ -19,6 +22,21 @@ def teacher_edit(request):
     return render(request, 'teacher/edit.html')
 
 def calendar_list(request, year, month):
+    # 前月・次月の計算
+    if month == 1:
+        prev_year = year - 1
+        prev_month = 12
+    else:
+        prev_year = year
+        prev_month = month - 1
+
+    if month == 12:
+        next_year = year + 1
+        next_month = 1
+    else:
+        next_year = year
+        next_month = month + 1
+
     # 月初と月末を計算
     start_date = datetime(year, month, 1)
     if month == 12:
@@ -60,7 +78,12 @@ def calendar_list(request, year, month):
         'year': year,
         'month': month,
         'calendar_days': calendar_days,
+        'prev_year': prev_year,
+        'prev_month': prev_month,
+        'next_year': next_year,
+        'next_month': next_month,
     })
+
 
 
 def teacher_logout(request):

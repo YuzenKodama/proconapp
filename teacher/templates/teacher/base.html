@@ -7,8 +7,8 @@
     <div class="menu-icon" onclick="toggleDropdown()">☰</div>
     <div class="dropdown" id="dropdownMenu">
         <a href="/teacher">登校表示</a>
-        <a href="/teacher/edit">登録状況</a>
-        <a href="/teacher/holiday">休日設定</a>
+        <a href="/teacher/holiday">登校状況</a>
+        <a href="{% url 'teacher:calendar_list' year=year month=month %}">休日設定</a>
         <a href="{% url 'login:password_change' %}">パスワード変更</a>
         <a href="{% url 'login:logout' %}">ログアウト</a>
 </header>

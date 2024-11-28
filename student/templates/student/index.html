@@ -2,24 +2,31 @@
 {% load static %}
 {% block contents %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-container">
-            <label for="date">日付:</label>
-            <input type="date" name="date" value="{{ current_date }}" required readonly>
-        </div>
-        
 
-        <div class="button-container">
-            <button type="submit" name="status" value="present" class="button present">出席</button>
-            <button type="submit" name="status" value="late" class="button late">遅刻</button>
-            <button type="submit" name="status" value="leave_early" class="button leave">早退</button>
-            <button type="submit" name="status" value="absent" class="button absent">欠席</button>
-            <button type="submit" name="status" value="school-absence" class="button school-absence">公欠</button>
-        </div>
-    </form>
+<!-- 現在の日付を表示 -->
+<div class="current-date">
+    <p id="current-date">{{ current_date }}</p>  <!-- 初期値はビューから渡された日付 -->
+</div>
 
-<script src="{% static 'js/student.js' %}"></script>
+<!-- 現在の時刻を表示 -->
+<div class="current-time">
+    <p id="current-time">現在の時刻: {{ current_time }}</p>  <!-- 初期値はビューから渡された時刻 -->
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    {% for error in form.non_field_errors %}
+    {{ error }}
+    {% endfor %}
+    <div>
+        <input type="hidden">{{ form.date }}<!-- date フィールドを明示的にレンダリング -->
+    </div>
+    
+    <div class="button-container">
+        <button type="submit" name="status" value="present" class="button present">出席</button>
+        <button type="submit" name="status" value="late" class="button late">遅刻</button>
+        <button type="submit" name="status" value="leave_early" class="button leave">早退</button>
+        <button type="submit" name="status" value="absent" class="button absent">欠席</button>    </div>
+</form>
+
 {% endblock %}
-
-

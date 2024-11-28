@@ -11,6 +11,12 @@
 <body>
     <h1>{{ year }}年{{ month }}月のカレンダー</h1>
 
+    <!-- 月変更ボタン -->
+    <div>
+        <a href="{% url 'teacher:calendar_list' year=year month=month|add:-1 %}">前の月</a>
+        <a href="{% url 'teacher:calendar_list' year=year month=month|add:1 %}">次の月</a>
+    </div>
+
     <!-- フォームを使って一括変更 -->
     <form method="post">
         {% csrf_token %}
