@@ -5,47 +5,71 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Attendance
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from date.models import Calendar
+
 @login_required
 def student_home(request):
-    current_date = timezone.now().date().isoformat()  # 現在の日付を取得
+    current_date = timezone.now().date()  # 現在の日付を取得
     current_time = timezone.now().strftime("%H:%M:%S")  # 現在の時刻を「時:分:秒」形式で取得
 
+    # 今日が休日かどうかをチェック
+    try:
+        calendar_entry = Calendar.objects.get(date=current_date)
+        if calendar_entry.is_holiday:
+            # 休日の場合はエラーメッセージを表示
+            return render(request, 'student/index.html', {
+                'error_message': '今日は休日のため、出席登録はできません。',
+                'current_date': current_date,
+                'current_time': current_time,
+            })
+    except Calendar.DoesNotExist:
+        pass
+
     if request.method == 'POST':
-        print('1')
         form = AttendanceForm(request.POST)
-        print('1')
         if form.is_valid():
-            print('2')
             existing_attendance = Attendance.objects.filter(
                 date=current_date,  # 出席日が現在の日付と一致するか
                 student=request.user,
             ).exists()
 
             if existing_attendance:
-                print('3')
-                form.add_error(None, 'すでに出席が登録されています。')
+                # 既に出席登録がある場合はエラーメッセージを表示
+                return render(request, 'student/index.html', {
+                    'message': '既に出席登録されています。',
+                    'current_date': current_date,
+                    'current_time': current_time,
+                })
             else:
-                print('4')
+                # 出席登録を保存
                 attendance = form.save(commit=False)
                 attendance.student = request.user
-                attendance.attendance_time = timezone.now().time()  # 出席時間を設定
-                attendance.reason = None
+                attendance.date = current_date
                 attendance.save()
-                date = "Calendar object (" + current_date + ")"
-                print(form.cleaned_data['date'])
-                return redirect('student_home')
-        else:
-            print('aaa')
-            print(form.errors)  # エラー内容を確認
+                return redirect('student:list')
+
     else:
-        print('bbb')
         form = AttendanceForm()
 
     return render(request, 'student/index.html', {
         'form': form,
-        'current_date': current_date,  # 現在の日付をテンプレートに渡す
-        'current_time': current_time,  # 現在の時間をテンプレートに渡す
+        'current_date': current_date,
+        'current_time': current_time,
     })
+
+@login_required
+def list(request):
+    # 現在ログインしているユーザーを取得
+    user = request.user
+    print(user)
+    
+    # 現在ログインしているユーザーのstudent_idを取得
+    student_id = user.student_id
+    # student_idが一致する出席データを取得
+    attendances = Attendance.objects.filter(student=user)  # 学生に関連する出席データを取得
+
+    # 出席データをテンプレートに渡す
+    return render(request, 'student/list.html', {'attendances': attendances})
 
 
 def attendance_list(request):

@@ -1,56 +1,34 @@
-<!--生徒登校の確認画面-->
-{% extends "manager/base.html" %}
-{% load static %}
+{% extends 'manager/base.html' %}
 
-<!DOCTYPE html>
-<html lang="ja">
 {% block contents %}
-<header>
-
-</header>
-
-<div class="date-container">
-    <label for="date">日付を選択:</label>
-    <input type="date" id="date" name="date">
-    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
-    <input type="submit" value="検索">
-</div>
-<select id="status">
-    <option value="出席">出席</option>
-    <option value="遅刻">遅刻</option>
-    <option value="早退">早退</option>
-    <option value="欠席">欠席</option>
-</select>
-
-<table>
-    <thead>
-        <tr>
-            <th>学籍番号</th>
-            <th>名前</th>
-            <th>クラス</th>
-            <th>出席日数</th>
-            <th>欠席日数</th>
-            <th>確認</th>
-        </tr>
-    </thead>
-    <tbody id="attendanceData">
-        <tr>
-            <td contenteditable="true">123456</td>
-            <td contenteditable="true">田中 太郎</td>
-            <td contenteditable="true">システム開発</td>
-            <td contenteditable="true">120</td>
-            <td contenteditable="true">4</td>
-            <td><a href="situation_edit.html" class="situation_edit-button">確認</a></td>
-        </tr>
-        <tr>
-            <td contenteditable="true">123457</td>
-            <td contenteditable="true">佐藤 花子</td>       
-            <td contenteditable="true">高度システム開発</td>
-            <td contenteditable="true">116</td>
-            <td contenteditable="true">8</td>
-            <td><a href="situation_edit.html" class="situation_edit-button">確認</a></td>
-        </tr>
-    </tbody>
-</table>
-</div>
+    <h1>出席一覧</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>出席ID</th>
+                <th>生徒</th>
+                <th>日付</th>
+                <th>出席状況</th>
+                <th>登校時間</th>
+                <th>理由</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendances %}
+                <tr>
+                    <td>{{ attendance.attendance_id }}</td>
+                    <td>{{ attendance.student.username }}</td>  <!-- 生徒のユーザー名を表示 -->
+                    <td>{{ attendance.date.date }}</td>  <!-- カレンダーの日付を表示 -->
+                    <td>{{ attendance.get_status_display }}</td>  <!-- 出席状況（choices）を表示 -->
+                    <td>{{ attendance.attendance_time }}</td>
+                    <td>{{ attendance.reason }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">出席データがありません。</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
+

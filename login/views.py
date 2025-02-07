@@ -32,9 +32,9 @@ def login_view(request):
             if user.role == CustomUser.Role.STUDENT:
                 return redirect('student_home')  # 生徒のビューにリダイレクト
             elif user.role == CustomUser.Role.TEACHER:
-                return redirect('teacher_home')  # 先生のビューにリダイレクト
+                return redirect('teacher:teacher_home')  # 先生のビューにリダイレクト
             elif user.role == CustomUser.Role.ADMIN:
-                return redirect('admin_home')  # 管理者のビューにリダイレクト
+                return redirect('manager:manager_home')  # 管理者のビューにリダイレクト
         else:
             messages.error(request, "パスワードが無効です。")
     
@@ -53,4 +53,15 @@ class CustomLogoutView(LogoutView):
 
 
 def logout_page(request):
-    return render(request, 'login/logout.html')
+    user = request.user
+    if user.role == '0':
+        base_template = 'student/base.html'
+    elif user.role == '1':
+        base_template = 'teacher/base.html'
+    else:
+        base_template = 'login/base.html'  # デフォルトのベーステンプレート
+
+    print(base_template)
+    print(user.role)
+
+    return render(request, 'login/logout.html', {'base_template': base_template})

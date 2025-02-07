@@ -1,26 +1,55 @@
 # student/views.py
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from date.models import Calendar
 from django.utils import timezone
 from django.contrib import messages
 import calendar
 from datetime import datetime, timedelta
+from student.models import Attendance
 
-
-
+@login_required
 def teacher_home(request):
-    now = datetime.now()
-    year = now.year
-    month = now.month
-    # 最新の年月のカレンダー一覧ページにリダイレクト
-    return redirect('teacher:teacher_home', year=year, month=month)
+    # 今日の日付を取得
+    today = timezone.now().date()
+    
+    # 当日分の出席データを取得  1
+    attendances = Attendance.objects.filter(date__date=today)  # 当日の日付に一致する出席データを取得
+    
+    # 今日の日付からyearとmonthを取得
+    year = today.year
+    month = today.month
 
+    # 出席データとyear、monthをテンプレートに渡す
+    return render(request, 'teacher/index.html', {
+        'attendances': attendances,
+        'year': year,
+        'month': month
+    })
+
+@login_required
 def teacher_changepass(request):
     return render(request, 'teacher/changepass.html')
 
+@login_required
 def teacher_edit(request):
-    return render(request, 'teacher/edit.html')
+    attendances = Attendance.objects.all()  # 学生に関連する出席データを取得
 
+    # 出席データをテンプレートに渡す
+    # 今日の日付からyearとmonthを取得
+    today = timezone.now().date()
+    year = today.year
+    month = today.month
+
+    # 出席データとyear、monthをテンプレートに渡す
+    return render(request, 'teacher/index.html', {
+        'attendances': attendances,
+        'year': year,
+        'month': month
+    })
+    return render(request, 'teacher/edit.html', {'attendances': attendances})
+
+@login_required
 def calendar_list(request, year, month):
     # 前月・次月の計算
     if month == 1:
@@ -85,6 +114,6 @@ def calendar_list(request, year, month):
     })
 
 
-
+@login_required
 def teacher_logout(request):
     return render(request, 'teacher/logout.html')

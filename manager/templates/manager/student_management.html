@@ -1,48 +1,29 @@
-<!--生徒の情報-->
+{% extends 'manager/base.html' %}
 
-{% extends "manager/base.html" %}
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="ja">
 {% block contents %}
-<header>
-
-</header>
-
-<h1>生徒情報確認</h1>
-<div class="date-container">
-    <label for="date">日付を選択:</label>
-    <input type="date" id="date" name="date">
-    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
-    <input type="submit" value="検索">
-</div>
-
-<table>
+<h1>学生管理</h1>
+<table border="1">
     <thead>
         <tr>
-            <th>学籍番号</th>
-            <th>名前</th>
-            <th>クラス</th>
+            <th>ユーザー名</th>
+            <th>学生ID</th>
             <th>メールアドレス</th>
+            <th>在籍状況</th>
         </tr>
     </thead>
-    <tbody id="attendanceData">
+    <tbody>
+        {% for student in students %}
         <tr>
-            <td contenteditable="true">123456</td>
-            <td contenteditable="true">田中 太郎</td>
-            <td contenteditable="true">システム開発</td>
-            <td contenteditable="true">tanaka@icloud.com </td>
-           
-           
+            <td>{{ student.username|default:"登録なし" }}</td>
+            <td>{{ student.student_id|default:"登録なし" }}</td>
+            <td>{{ student.email|default:"登録なし" }}</td>
+            <td>{{ student.is_active|yesno:"在籍中,退学" }}</td>
         </tr>
+        {% empty %}
         <tr>
-            <td contenteditable="true">543216</td>
-            <td contenteditable="true">渡辺 徹</td>
-            <td contenteditable="true">システム開発</td>
-            <td contenteditable="true">watanabe@icloud.com </td>
+            <td colspan="4">学生データがありません。</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
-</div>
-{%endblock %}
+{% endblock %}

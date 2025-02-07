@@ -8,4 +8,3 @@ class CalendarForm(forms.Form):
         required=False,
     )
     is_holiday = forms.BooleanField(required=True, label="一括で休日フラグを変更する", initial=True)
-

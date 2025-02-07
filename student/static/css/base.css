@@ -1,65 +1,45 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-
-header {
-    background-color: #333;
-    color: #fff;
+.custom-header {
+    background-color: #333; /* 暗めのグレー */
+    color: white; /* 白文字 */
+    padding: 10px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    position: relative;
+    align-items: center;
 }
 
-
-.logo {
+.custom-logo {
     font-size: 24px;
     font-weight: bold;
 }
 
-/* Menu Icon Styling */
-.menu-icon {
+.custom-menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-/* Dropdown Menu Styling */
-.dropdown {
+.custom-dropdown {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 50px;
-    right: 20px;
-    background-color: #333;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    right: 10px;
+    background-color: #333; /* 暗めのグレー */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.dropdown a {
-    color: #fff;
+.custom-dropdown.show {
+    display: flex;
+}
+
+.custom-dropdown a {
+    color: white; /* 白文字 */
+    padding: 10px;
     text-decoration: none;
-    padding: 8px 10px;
-    font-size: 16px;
     display: block;
 }
 
-.dropdown a:hover {
-    background-color: #444;
-}
-
-/* Show Dropdown Menu */
-.show {
-    display: flex;
+.custom-dropdown a:hover {
+    background-color: #555; /* 少し明るめのグレー */
 }

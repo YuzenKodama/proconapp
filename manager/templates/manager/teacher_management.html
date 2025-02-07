@@ -1,47 +1,38 @@
-<!--先生の情報-->
-{% extends "manager/base.html" %}
-{% load static %}
+{% extends 'manager/base.html' %}
 
-<!DOCTYPE html>
-<html lang="ja">
 {% block contents %}
-<header>
+<h1>教師管理</h1>
 
-</header>
-<h1>先生情報確認</h1>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-<div class="date-container">
-    <label for="date">日付を選択:</label>
-    <input type="date" id="date" name="date">
-    <input type="text" id="keyword" name="keyword" class="keyword" placeholder="キーワード:">
-    <input type="submit" value="検索">
-</div>
-
-<table>
+<table border="1">
     <thead>
         <tr>
-            <th>学籍番号</th>
-            <th>名前</th>
-            <th>クラス</th>
+            <th>ユーザー名</th>
+            <th>教師ID</th>
             <th>メールアドレス</th>
+            <th>在籍状況</th>
         </tr>
     </thead>
-    <tbody id="attendanceData">
+    <tbody>
+        {% for teacher in teachers %}
         <tr>
-            <td contenteditable="true">123456</td>
-            <td contenteditable="true">田中 太郎</td>
-            <td contenteditable="true">システム開発</td>
-            <td contenteditable="true">tanaka@icloud.com </td>
-           
-           
+            <td>{{ teacher.username|default:"登録なし" }}</td>
+            <td>{{ teacher.student_id|default:"登録なし" }}</td>
+            <td>{{ teacher.email|default:"登録なし" }}</td>
+            <td>{{ teacher.is_active|yesno:"在籍中,退職" }}</td>
         </tr>
+        {% empty %}
         <tr>
-            <td contenteditable="true">543216</td>
-            <td contenteditable="true">渡辺 徹</td>
-            <td contenteditable="true">システム開発</td>
-            <td contenteditable="true">watanabe@icloud.com </td>
+            <td colspan="4">教師データがありません。</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
-</div>
-{%endblock %}
+{% endblock %}

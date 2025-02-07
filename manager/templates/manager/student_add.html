@@ -1,0 +1,36 @@
+{% extends 'manager/base.html'%}
+{% block contents %}
+<h1>新しい学生を追加</h1>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="{{ form.username.id_for_label }}">ユーザー名</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div class="error">{{ form.username.errors }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label for="{{ form.student_id.id_for_label }}">学生ID</label>
+        {{ form.student_id }}
+        {% if form.student_id.errors %}
+            <div class="error">{{ form.student_id.errors }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label for="{{ form.email.id_for_label }}">メールアドレス</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <div class="error">{{ form.email.errors }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label for="{{ form.password.id_for_label }}">パスワード</label>
+        {{ form.password }}
+        {% if form.password.errors %}
+            <div class="error">{{ form.password.errors }}</div>
+        {% endif %}
+    </div>
+    <button type="submit">追加</button>
+</form>
+{% endblock %}

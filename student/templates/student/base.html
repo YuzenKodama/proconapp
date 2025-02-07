@@ -1,31 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>生徒管理アプリ</title>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <script>
-            function toggleDropdown() {
-                var dropdownMenu = document.getElementById("dropdownMenu");
-                dropdownMenu.classList.toggle("show");
-            }
-            </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>生徒ページ</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script>
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.classList.toggle("show");
+        }
+    </script>
+</head>
 <body>
-    <header>
-    <div class="logo">生徒</div>
-    <div class="menu-icon" onclick="toggleDropdown()">☰</div>
-    <div class="dropdown" id="dropdownMenu">
-        <a href="/student">出席登録</a>
-        <a href="#">出席・出欠確認</a>
-        <a href="{% url 'attendance_list' %}">理由届</a>
-        <a href="{% url 'login:password_change' %}">パスワード変更</a>
-        <a href="{% url 'login:logout' %}">ログアウト</a>
-    </div>
+    <header class="custom-header">
+        <div class="custom-logo">生徒</div>
+        <div class="custom-menu-icon" onclick="toggleDropdown()">☰</div>
+        <div class="custom-dropdown" id="dropdownMenu">
+            <a href="/student">出席登録</a>
+            <a href="{% url 'list' %}">出席・出欠確認</a>
+            <a href="{% url 'attendance_list' %}">理由届</a>
+            <a href="{% url 'login:password_change' %}">パスワード変更</a>
+            <a href="{% url 'login:logout' %}">ログアウト</a>
+        </div>
     </header>
     {% block contents %}{% endblock %}
 </body>
 </html>
-
